@@ -1,0 +1,28 @@
+server:
+  port: 9527
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+
+info:
+  app.name: sxt-microservicecloud
+  company.name: www.zzsxt.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+spring:
+  application:
+    name: microservicecloud_zuul_gateway
+
+zuul:
+  routes:
+    mydept.serviceId: MICROSERVICECLOUD_CONSUMER
+    mydept.path: /mydept/**
+  ignored-services: "*"
+  prefix: "/sxt"
